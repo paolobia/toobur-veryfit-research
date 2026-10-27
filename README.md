@@ -1,6 +1,24 @@
-# Toobur / VeryFit protocol workspace
+# Toobur / VeryFit protocol workspace — fork with ID205U support
 
-> **Fork notice.** This is a fork of [d3nd3/toobur-veryfit-research](https://github.com/d3nd3/toobur-veryfit-research), created by Graham Fenner (d3nd3). All the original research, captures and driver work are theirs. The `gadgetbridge/` folder is a fork of [d3nd3/gadgetbridge-veryfit](https://github.com/d3nd3/gadgetbridge-veryfit), itself a fork of [Gadgetbridge](https://codeberg.org/Freeyourgadget/Gadgetbridge). Changes in this fork are listed in the git history, and the code is released under AGPL-3.0 (see [`LICENSE`](LICENSE)).
+## What this fork adds
+
+This is a fork of [d3nd3/toobur-veryfit-research](https://github.com/d3nd3/toobur-veryfit-research) (Graham Fenner, d3nd3). All the protocol research, captures and the Toobur driver are the original author's work. This fork exists to add **support for the ID205U smartwatch** (sold on Amazon as "ASIAMENG ID205U"), which the original project does not cover. Everything else is unchanged.
+
+- **ID205U recognised by the driver.** The `ID205` name is matched when scanning and pairing (`TooburCoordinator`), in addition to the original service-UUID filter.
+- **Legacy health sync for the ID205U.** The ID205U firmware does not seem to offer the v3 health sync used by the Toobur A200, so `TooburSupport` falls back to the older ID115 activity fetch (`FetchActivityOperation`). That fetch now also requests yesterday's data and reassembles the 5-byte samples across 16-byte packets. The code comments say the keys were observed on an ID205U.
+- **Fixes after merging upstream Gadgetbridge.** Calls to `addGBActivitySamples` now match the new list-based signature, and the welcome screen is skipped when a device is already configured.
+- **Web Bluetooth tool** (`htmlapp/confirmed-only.html`): finds devices by the name prefix `ID`, so the ID205U shows up.
+- **Project files:** `CLAUDE.md` (project guide) and `LICENSE` (AGPL-3.0, same as Gadgetbridge).
+
+**Status:** these changes have not been built or tested on a real ID205U yet. It is not confirmed that the A200 captures in this repo apply to the ID205U.
+
+**Two forks.** The `gadgetbridge/` folder is a nested repository pointing at [d3nd3/gadgetbridge-veryfit](https://github.com/d3nd3/gadgetbridge-veryfit), so the Java changes live in a second fork, [paolobia/gadgetbridge-veryfit](https://github.com/paolobia/gadgetbridge-veryfit). The pointer in this repo refers to a commit that exists only there.
+
+## Original project
+
+Fork of [d3nd3/toobur-veryfit-research](https://github.com/d3nd3/toobur-veryfit-research). `gadgetbridge/` is a fork of [d3nd3/gadgetbridge-veryfit](https://github.com/d3nd3/gadgetbridge-veryfit), itself a fork of [Gadgetbridge](https://codeberg.org/Freeyourgadget/Gadgetbridge). Released under AGPL-3.0 (see [`LICENSE`](LICENSE)).
+
+---
 
 A **GadgetBridge** implementation for Toobur and other IDO/angelfit-like smartwatches (Realtek 0x0AF0 protocol), plus related protocol notes and tooling.
 
