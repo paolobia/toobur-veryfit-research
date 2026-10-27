@@ -1,5 +1,7 @@
 # Toobur / VeryFit protocol workspace
 
+> **Fork notice.** This is a fork of [d3nd3/toobur-veryfit-research](https://github.com/d3nd3/toobur-veryfit-research), created by Graham Fenner (d3nd3). All the original research, captures and driver work are theirs. The `gadgetbridge/` folder is a fork of [d3nd3/gadgetbridge-veryfit](https://github.com/d3nd3/gadgetbridge-veryfit), itself a fork of [Gadgetbridge](https://codeberg.org/Freeyourgadget/Gadgetbridge). Changes in this fork are listed in the git history, and the code is released under AGPL-3.0 (see [`LICENSE`](LICENSE)).
+
 A **GadgetBridge** implementation for Toobur and other IDO/angelfit-like smartwatches (Realtek 0x0AF0 protocol), plus related protocol notes and tooling.
 
 The same Toobur watch hardware is sold under multiple names, including **TOOBUR A200** and **TOOBUR BAND 8** (this repo uses both interchangeably).
