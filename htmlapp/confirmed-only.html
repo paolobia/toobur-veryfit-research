@@ -4102,7 +4102,7 @@
                     log('Web Bluetooth not available. Use Chrome and serve over HTTPS or localhost.');
                     return;
                 }
-                navigator.bluetooth.requestDevice({ filters: [{ services: [SERVICE_UUID] }] })
+                navigator.bluetooth.requestDevice({ filters: [{ namePrefix: "ID" }], optionalServices: [SERVICE_UUID] })
                     .then(device => device.gatt.connect())
                     .then(server => server.getPrimaryService(SERVICE_UUID))
                     .then(service => Promise.all([
